@@ -1,0 +1,17 @@
+{
+  "about.qmd": {
+    "about.html": "47e3f258"
+  },
+  "index.qmd": {
+    "index.html": "6c9ceba9"
+  },
+  "sample.qmd": {
+    "sample.html": "94fca770"
+  },
+  "health.qmd": {
+    "health.html": "7d98a1d1"
+  },
+  "political_interest.qmd": {
+    "political_interest.html": "06839ca7"
+  }
+}

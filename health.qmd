@@ -1,0 +1,64 @@
+---
+title: "Health"
+---
+
+```{r, echo=FALSE}
+pacman::p_load(tidyverse, readxl, haven, sjlabelled, knitr) 
+clean_sample <- read_sav("data/cleaned_data.sav")
+vars_to_factor <- c( "A50", paste0("A51_", 1:7), "A52", paste0("A76_", 1:9), "A88", paste0("Q138_", 1:7) )
+```
+
+Here we take a look at the health complaints voiced by our non-existent participants.
+
+```{r, echo=FALSE}
+response_levels <- c(
+  "Rarely or never",
+  "Around once a month",
+  "Around once a week",
+  "Several times a week",
+  "Most days"
+)
+
+item_labels <- c(
+  A51_1 = "Headache",
+  A51_2 = "Stomach ache",
+  A51_3 = "Back ache",
+  A51_4 = "Feeling low, depressed",
+  A51_5 = "Irritable, bad-tempered",
+  A51_6 = "Nervous",
+  A51_7 = "Difficulty getting to sleep"
+)
+
+clean_sample %>%
+  select(A51_1:A51_7) %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = "item",
+    values_to = "response"
+  ) %>%
+  mutate(
+    item = recode(item, !!!item_labels),
+    item = factor(item, levels = unname(item_labels)),
+    response = factor(
+      response,
+      levels = 1:5,
+      labels = response_levels
+    )
+  ) %>%
+  filter(!is.na(response)) %>%
+  count(item, response) %>%
+  group_by(item) %>%
+  mutate(percent = n / sum(n) * 100) %>%
+  ggplot(aes(x = item, y = percent, fill = response)) +
+  geom_col() +
+  labs(
+    title = "Frequency of health complaints",
+    x = NULL,
+    y = "Percent",
+    fill = "Response"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```

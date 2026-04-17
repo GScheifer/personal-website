@@ -1,0 +1,38 @@
+---
+title: "About the sample"
+---
+
+```{r, echo=FALSE}
+pacman::p_load(tidyverse, readxl, haven, sjlabelled, knitr) 
+clean_sample <- read_sav("data/cleaned_data.sav")
+vars_to_factor <- c( "A50", paste0("A51_", 1:7), "A52", paste0("A76_", 1:9), "A88", paste0("Q138_", 1:7) )
+
+mean_height <- round(mean(clean_sample$A54, na.rm = TRUE), 2)
+min_height <- min(clean_sample$A54, na.rm = TRUE)
+max_height <- max(clean_sample$A54, na.rm = TRUE)
+
+mean_weight <- round(mean(clean_sample$A53, na.rm = TRUE), 2)
+min_weight <- min(clean_sample$A53, na.rm = TRUE)
+max_weight <- max(clean_sample$A53, na.rm = TRUE)
+```
+
+Here we use fictitious data from 500 participants. Let's start by looking at their weight and height!
+
+The mean height is `r mean_height` cm. The tallest participant is `r max_height` cm, while the smallest is `r min_height` cm.
+
+The mean weight is `r mean_weight` kg. The largest participant is `r max_weight` kg, while the lightest is `r min_weight` kg.
+
+Here is how their distribution looks:
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+clean_sample %>%
+  ggplot(aes(x = A54, y = A53)) +
+  geom_point(alpha = 0.6, na.rm = TRUE) +
+  geom_smooth(method = "lm", se = TRUE, na.rm = TRUE) +
+  labs(
+    title = "Weight by height",
+    x = "Height",
+    y = "Weight"
+  ) +
+  theme_minimal()
+```

@@ -1,0 +1,17 @@
+{
+  "hash": "0afaf2f0ba950904fde66235285c7edb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Sample\"\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse, readxl, haven, sjlabelled, knitr) \nclean_sample <- read_sav(\"data/cleaned_data.sav\")\nvars_to_factor <- c( \"A50\", paste0(\"A51_\", 1:7), \"A52\", paste0(\"A76_\", 1:9), \"A88\", paste0(\"Q138_\", 1:7) )\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nresponse_levels <- c(\n  \"Rarely or never\",\n  \"Around once a month\",\n  \"Around once a week\",\n  \"Several times a week\",\n  \"Most days\"\n)\n\nitem_labels <- c(\n  A51_1 = \"Headache\",\n  A51_2 = \"Stomach ache\",\n  A51_3 = \"Back ache\",\n  A51_4 = \"Feeling low, depressed\",\n  A51_5 = \"Irritable, bad-tempered\",\n  A51_6 = \"Nervous\",\n  A51_7 = \"Difficulty getting to sleep\"\n)\n\nclean_sample %>%\n  select(A51_1:A51_7) %>%\n  pivot_longer(\n    cols = everything(),\n    names_to = \"item\",\n    values_to = \"response\"\n  ) %>%\n  mutate(\n    item = recode(item, !!!item_labels),\n    item = factor(item, levels = unname(item_labels)),\n    response = factor(\n      response,\n      levels = 1:5,\n      labels = response_levels\n    )\n  ) %>%\n  filter(!is.na(response)) %>%\n  count(item, response) %>%\n  group_by(item) %>%\n  mutate(percent = n / sum(n) * 100) %>%\n  ggplot(aes(x = item, y = percent, fill = response)) +\n  geom_col() +\n  labs(\n    title = \"Frequency of health complaints\",\n    x = NULL,\n    y = \"Percent\",\n    fill = \"Response\"\n  ) +\n  theme_minimal() +\n  theme(\n    axis.text.x = element_text(angle = 45, hjust = 1)\n  )\n```\n\n::: {.cell-output-display}\n![](sample_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n",
+    "supporting": [
+      "sample_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

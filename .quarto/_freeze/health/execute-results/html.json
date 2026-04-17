@@ -1,0 +1,17 @@
+{
+  "hash": "15a19469fc2f4d6fe3f802b5875b377e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Health\"\n---\n\n\n::: {.cell}\n\n:::\n\n\nHere we take a look at the health complaints voiced by our non-existent participants.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](health_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n",
+    "supporting": [
+      "health_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

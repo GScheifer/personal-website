@@ -1,0 +1,17 @@
+{
+  "hash": "1936f254060a9aad17dd9718de5d967a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"About the sample\"\n---\n\n\n::: {.cell}\n\n:::\n\n\nHere we use fictitious data from 500 participants. Let's start by looking at their weight and height!\n\nThe mean height is 170.89 cm. The tallest participant is 195 cm, while the smallest is 140 cm.\n\nThe mean weight is 67.64 kg. The largest participant is 135 kg, while the lightest is 30 kg.\n\nHere is how their distribution looks:\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](about_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n",
+    "supporting": [
+      "about_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

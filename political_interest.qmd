@@ -1,0 +1,43 @@
+---
+title: "Political Interest"
+---
+
+```{r, echo = FALSE}
+pacman::p_load(tidyverse, readxl, haven, sjlabelled, knitr) 
+clean_sample <- read_sav("data/cleaned_data.sav")
+vars_to_factor <- c( "A50", paste0("A51_", 1:7), "A52", paste0("A76_", 1:9), "A88", paste0("Q138_", 1:7) )
+```
+
+```{r, echo = FALSE}
+a88_levels <- c(
+  "Extremely",
+  "Very",
+  "Medium",
+  "Not very",
+  "Not at all"
+)
+
+a88_plot_data <- clean_sample %>%
+  mutate(
+    A88 = factor(A88, levels = 1:5, labels = a88_levels),
+    A88 = factor(A88, levels = rev(a88_levels))
+  ) %>%
+  filter(!is.na(A88)) %>%
+  count(A88) %>%
+  mutate(percent = n / sum(n) * 100)
+
+ggplot(a88_plot_data, aes(x = A88, y = percent, fill = A88)) +
+  geom_col() +
+  geom_text(aes(label = paste0(round(percent, 1), "%")), vjust = -0.3) +
+  labs(
+    title = "Political interest",
+    x = NULL,
+    y = "Percent",
+    fill = NULL
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  expand_limits(y = max(a88_plot_data$percent) + 5)
+```
+
+It is clearly visible that our sample is not very interested in politics.

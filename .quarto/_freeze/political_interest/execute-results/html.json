@@ -1,0 +1,17 @@
+{
+  "hash": "db417922878ea2e25208f93c838e0227",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Political Interest\"\n---\n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](political_interest_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n\nIt is clearly visible that our sample is not very interested in politics.\n",
+    "supporting": [
+      "political_interest_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

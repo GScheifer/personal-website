@@ -1,0 +1,11 @@
+---
+title: "Welcome"
+---
+
+This is to show how websites can be built using R for a course.
+
+First, have a look at this fluffy dog taken from Wikipedia.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/dog.jpg")
+```

@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "sample.html",
+    "href": "sample.html",
+    "title": "Sample",
+    "section": "",
+    "text": "pacman::p_load(tidyverse, readxl, haven, sjlabelled, knitr) \nclean_sample &lt;- read_sav(\"data/cleaned_data.sav\")\nvars_to_factor &lt;- c( \"A50\", paste0(\"A51_\", 1:7), \"A52\", paste0(\"A76_\", 1:9), \"A88\", paste0(\"Q138_\", 1:7) )\n\n\nresponse_levels &lt;- c(\n  \"Rarely or never\",\n  \"Around once a month\",\n  \"Around once a week\",\n  \"Several times a week\",\n  \"Most days\"\n)\n\nitem_labels &lt;- c(\n  A51_1 = \"Headache\",\n  A51_2 = \"Stomach ache\",\n  A51_3 = \"Back ache\",\n  A51_4 = \"Feeling low, depressed\",\n  A51_5 = \"Irritable, bad-tempered\",\n  A51_6 = \"Nervous\",\n  A51_7 = \"Difficulty getting to sleep\"\n)\n\nclean_sample %&gt;%\n  select(A51_1:A51_7) %&gt;%\n  pivot_longer(\n    cols = everything(),\n    names_to = \"item\",\n    values_to = \"response\"\n  ) %&gt;%\n  mutate(\n    item = recode(item, !!!item_labels),\n    item = factor(item, levels = unname(item_labels)),\n    response = factor(\n      response,\n      levels = 1:5,\n      labels = response_levels\n    )\n  ) %&gt;%\n  filter(!is.na(response)) %&gt;%\n  count(item, response) %&gt;%\n  group_by(item) %&gt;%\n  mutate(percent = n / sum(n) * 100) %&gt;%\n  ggplot(aes(x = item, y = percent, fill = response)) +\n  geom_col() +\n  labs(\n    title = \"Frequency of health complaints\",\n    x = NULL,\n    y = \"Percent\",\n    fill = \"Response\"\n  ) +\n  theme_minimal() +\n  theme(\n    axis.text.x = element_text(angle = 45, hjust = 1)\n  )"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About the sample",
+    "section": "",
+    "text": "Here we use fictitious data from 500 participants. Let’s start by looking at their weight and height!\nThe mean height is 170.89 cm. The tallest participant is 195 cm, while the smallest is 140 cm.\nThe mean weight is 67.64 kg. The largest participant is 135 kg, while the lightest is 30 kg.\nHere is how their distribution looks:"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "This is to show how websites can be built using R for a course.\nFirst, have a look at this fluffy dog taken from Wikipedia."
+  },
+  {
+    "objectID": "health.html",
+    "href": "health.html",
+    "title": "Health",
+    "section": "",
+    "text": "Here we take a look at the health complaints voiced by our non-existent participants."
+  },
+  {
+    "objectID": "political_interest.html",
+    "href": "political_interest.html",
+    "title": "Political Interest",
+    "section": "",
+    "text": "It is clearly visible that our sample is not very interested in politics."
+  }
+]
