@@ -3,9 +3,7 @@
   "result": {
     "engine": "knitr",
     "markdown": "---\ntitle: \"Welcome\"\n---\n\nThis is to show how websites can be built using R for a course.\n\nFirst, have a look at this fluffy dog taken from Wikipedia.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](images/dog.jpg){width=480}\n:::\n:::\n\n",
-    "supporting": [
-      "index_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
