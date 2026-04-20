@@ -10,6 +10,13 @@ vars_to_factor <- c( "A50", paste0("A51_", 1:7), "A52", paste0("A76_", 1:9), "A8
 
 Here we take a look at the health complaints voiced by our non-existent participants.
 
+<!---Adrian:
+in some cases an interactive plot might be more rewarding for the audience.
+I recommend using the package plotly. You can create interactive plots https://plotly.com/r/
+--->
+
+
+
 ```{r, echo=FALSE}
 response_levels <- c(
   "Rarely or never",
