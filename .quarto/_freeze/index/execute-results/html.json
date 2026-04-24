@@ -1,8 +1,8 @@
 {
-  "hash": "5c25ba5ec4db94fff2d953ea8bcc585e",
+  "hash": "d1a09d421ab952c154fa6dbf476dcae7",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Welcome\"\n---\n\nThis is to show how websites can be built using R for a course.\n\nFirst, have a look at this fluffy dog taken from Wikipedia.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](images/dog.jpg){width=480}\n:::\n:::\n\n",
+    "markdown": "---\ntitle: \"Welcome\"\n---\n\n```{=html}\n<!---say, you'd like to have statistics about how many visitors your website has and a break-down of your visitors in terms of demographics.\n\nFor that you could use google analytics and link each page of your website with your google analytics account which will then quantify your visitors per page.\n\nOr you may want to have an automatic banner requesting for coocke confirmation. \n\nThese are a couple of other cool resources can be found here <https://quarto.org/docs/websites/website-tools.html>\n\n--->\n```\n\n```{=html}\n<!---a reminder: consider where the files for your website will be store--will it be on a GDPR conform server?\n\nwhen you use data for your website, the data might contain sensitive information. please make sure you upload to third party servers only what you are allowed to.--->\n```\n\nThis is to show how websites can be built using R for a course.\n\nFirst, have a look at this fluffy dog taken from Wikipedia.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](images/dog.jpg){width=480}\n:::\n:::\n\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

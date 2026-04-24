@@ -5,6 +5,17 @@ project:
   
 website:
   title: "Fake Data Presentation"
+  favicon: images/favicon.png
+  announcement:
+    icon: info-circle
+    dismissable: true
+    content: "**Notice** - This website does not use analytics, advertising, or other non-essential cookies."
+    type: primary
+    position: below-navbar
+  back-to-top-navigation: true
+  page-footer: 
+    left: "Course Project"
+    right: "Introduction to automatization and online application development using R"
   navbar:
     left:
       - href: index.qmd
@@ -13,12 +24,12 @@ website:
     right:
       - health.qmd
       - political_interest.qmd
-
+    
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
 

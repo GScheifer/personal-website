@@ -16,6 +16,18 @@ a88_levels <- c(
   "Not very",
   "Not at all"
 )
+a88_table <- clean_sample %>%
+  mutate(A88 = factor(A88, levels = 1:5, labels = a88_levels)) %>%
+  filter(!is.na(A88)) %>%
+  count(A88) %>%
+  mutate(
+    Percent = round(n / sum(n) * 100, 1),
+    `Cumulative %` = round(cumsum(n) / sum(n) * 100, 1)
+  ) %>%
+  rename(
+    `Political interest` = A88,
+    `N` = n
+  )
 
 a88_plot_data <- clean_sample %>%
   mutate(
@@ -40,4 +52,8 @@ ggplot(a88_plot_data, aes(x = A88, y = percent, fill = A88)) +
   expand_limits(y = max(a88_plot_data$percent) + 5)
 ```
 
-It is clearly visible that our sample is not very interested in politics.
+It is clearly visible that our sample is not very interested in politics. Let's look at the numbers:
+
+```{r, echo=FALSE}
+knitr::kable(a88_table, caption = "Distribution of political interest")
+```

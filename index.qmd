@@ -2,6 +2,7 @@
 title: "Welcome"
 ---
 
+```{=html}
 <!---say, you'd like to have statistics about how many visitors your website has and a break-down of your visitors in terms of demographics.
 
 For that you could use google analytics and link each page of your website with your google analytics account which will then quantify your visitors per page.
@@ -11,16 +12,13 @@ Or you may want to have an automatic banner requesting for coocke confirmation.
 These are a couple of other cool resources can be found here <https://quarto.org/docs/websites/website-tools.html>
 
 --->
+```
 
+```{=html}
 <!---a reminder: consider where the files for your website will be store--will it be on a GDPR conform server?
 
 when you use data for your website, the data might contain sensitive information. please make sure you upload to third party servers only what you are allowed to.--->
-
-<!---Adrian: you might want to add a favicon to your website -- that tiny icon you sometimes see on your webbrowser tab
-Here is a good beginner's guide: <https://stackoverflow.com/questions/74165889/add-icon-to-browser-tab-in-quarto#76827335>
-
-Note that this is an attribute to your website so it has to be specified in the .yml file. --->
---->
+```
 
 This is to show how websites can be built using R for a course.
 

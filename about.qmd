@@ -3,7 +3,7 @@ title: "About the sample"
 ---
 
 ```{r, echo=FALSE}
-pacman::p_load(tidyverse, readxl, haven, sjlabelled, knitr) 
+pacman::p_load(tidyverse, readxl, haven, sjlabelled, knitr, plotly) 
 clean_sample <- read_sav("data/cleaned_data.sav")
 vars_to_factor <- c( "A50", paste0("A51_", 1:7), "A52", paste0("A76_", 1:9), "A88", paste0("Q138_", 1:7) )
 
@@ -25,14 +25,23 @@ The mean weight is `r mean_weight` kg. The largest participant is `r max_weight`
 Here is how their distribution looks:
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-clean_sample %>%
-  ggplot(aes(x = A54, y = A53)) +
-  geom_point(alpha = 0.6, na.rm = TRUE) +
-  geom_smooth(method = "lm", se = TRUE, na.rm = TRUE) +
+p <- clean_sample %>%
+  filter(!is.na(A54), !is.na(A53)) %>%
+  ggplot(aes(
+    x = A54,
+    y = A53,
+    text = paste0(
+      "Height: ", round(A54, 1), " cm",
+      "<br>Weight: ", round(A53, 1), " kg"
+    )
+  )) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = TRUE) +
   labs(
     title = "Weight by height",
     x = "Height",
     y = "Weight"
   ) +
   theme_minimal()
+ggplotly(p, tooltip = "text")
 ```
