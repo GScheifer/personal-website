@@ -3,3 +3,19 @@ h1, h2, h3, h4, h5, h6 {
   color: #87cefa;
   text-align: left;
 }
+
+[data-bs-theme="light"] .navbar-nav .nav-link.active {
+  background-color: #dbeafe;
+  color: #1e3a5f !important;
+  border-radius: 6px;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+}
+
+[data-bs-theme="dark"] .navbar-nav .nav-link.active {
+  background-color: #1f3b57;
+  color: #87cefa !important;
+  border-radius: 6px;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+}
